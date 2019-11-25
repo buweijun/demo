@@ -45,6 +45,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 	@Override
+	public int updateCustomer(Customer customer) {
+		return customerMapper.update(customer);
+	}
+
+
+	@Override
 	public void delete(int id) {
 		customerMapper.delete(id);
 	}

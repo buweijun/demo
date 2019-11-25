@@ -17,10 +17,9 @@
   <body>
 
     <div class="container">
-      <h1>hello world</h1>
+      <h1>customer List</h1>
 
 		<table>
-			<tr>customer</tr>
 		    <tr>
 		    	<td>count</td>
 		    	<td>ID</td>
@@ -38,7 +37,9 @@
 		 		<td th:text="${entries['job']}"></td>
 		 		<td>
 		 			<a th:href="@{'/customer/deleteCustomer/'+${entries['id']}}">delete</a>
+		 			<a th:href="@{'/customer/toUpdate/'+${entries['id']}}">update</a>
 		 			<a th:href="@{'/customer/getCustomer/'+${entries['id']}}">view</a>
+
 		 		</td>
 		     </tr>
 		</table>

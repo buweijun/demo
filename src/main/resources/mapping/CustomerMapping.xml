@@ -26,6 +26,10 @@
    	</insert>
 
 
+	<update id="update" parameterType="com.example.demo.entity.Customer">
+		update CUSTOMER SET userName=#{userName},passWord = #{passWord},job = #{job} where id=#{id}
+	</update>
+
 
 	<delete id="delete" parameterType="java.lang.Integer">
         delete from CUSTOMER where id = #{id}

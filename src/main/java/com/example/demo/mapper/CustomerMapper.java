@@ -16,5 +16,7 @@ public interface CustomerMapper {
 
 	int insert(Customer customer);
 
+	int update(Customer customer);
+
 	void delete(int id);
 }

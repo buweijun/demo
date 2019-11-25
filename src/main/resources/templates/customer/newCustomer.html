@@ -2,20 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Show User</title>
+    <title>Show Info</title>
 </head>
 <body>
 
 
 
+<form action="../newCustomer" method="post"  onsubmit="return beforeSubmit()">
 
 
-<form action="../customer/newCustomer" method="post" οnsubmit="return beforeSubmit()">
-
-	userName:<input type="text"  id="userName"   name="userName"  value=""  />
-	passWord:<input type="text"  id="passWord"   name="passWord"  value=""  />
-	job:<input type="text"  id="job"   name="job"  value=""  />
-
+	<table>
+		<tr>customer</tr>
+	    <tr>
+	    	<td>ID</td>
+	        <td>userName</td>
+	        <td>passWord</td>
+			<td>job</td>
+	    </tr>
+	    <tr>
+	    	<td><input type="hidden" id="id" name="id" th:value="${customer.id}" /></td>
+	        <td><input type="text"  id="userName"   name="userName"  th:value="${customer.userName}"  /></td>
+	        <td><input type="text"  id="passWord"   name="passWord"  th:value="${customer.passWord}"  /></td>
+	        <td><input type="text"  id="job"   name="job"   th:value="${customer.job}" /></td>
+	    </tr>
+	</table>
 
     <input type="submit" value="Submit" />
 </form>

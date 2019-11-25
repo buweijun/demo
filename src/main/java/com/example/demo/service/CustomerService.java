@@ -13,6 +13,9 @@ public interface CustomerService {
 
 	public int newCustomer(Customer customer);
 
+	public int updateCustomer(Customer customer);
+
+
 	public String testdb();
 
 	public void delete(int id);
