@@ -49,6 +49,14 @@ public class CustomerController {
 
 
 
+	@RequestMapping("searchCustomer/{userName}")
+	public ModelAndView searchCustomer(@PathVariable String userName) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("customerList", customerService.findByUserName(userName));
+		mv.setViewName("/customer/customerList.html");
+		return mv;
+	}
+
 
 	@RequestMapping("/toNew")
 	public ModelAndView toNew(HttpServletRequest req) {
@@ -57,7 +65,7 @@ public class CustomerController {
 		Customer customer = new Customer();
 		customer.setId(-1);
 		customer.setJob("");
-		customer.setPassWord(0);
+		//customer.setPassWord(null);
 		customer.setUserName("");
 		mv.addObject("customer",customer);
 		mv.setViewName("/customer/newCustomer.html");
@@ -89,11 +97,16 @@ public class CustomerController {
 		if(id !=null&& id !=-1 && id !=0) {
 			customer.setId(id);
 			retInt = customerService.updateCustomer(customer);
+			System.out.println(">>>update >>>>>>>>>retInt--------->>   "+retInt);
+
+
 		}else {
 			retInt  = customerService.newCustomer(customer);
+			System.out.println(">>>new >>>>>>>>>retInt--------->>   "+retInt);
+
 		}
 
-		System.out.println(">>>>>>>>>>>>retInt--------->>   "+retInt);
+
 
 		mv.addObject("customerList", customerService.findCustomerList());
 		mv.setViewName("/customer/customerList.html");

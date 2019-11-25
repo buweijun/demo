@@ -12,6 +12,9 @@ public interface CustomerMapper {
 
 	Customer findById(int id);
 
+	Customer findByUserName(String userName);
+
+
 	List<Customer> findCustomerList();
 
 	int insert(Customer customer);
@@ -19,4 +22,6 @@ public interface CustomerMapper {
 	int update(Customer customer);
 
 	void delete(int id);
+
+
 }

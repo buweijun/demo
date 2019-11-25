@@ -8,6 +8,9 @@ public interface CustomerService {
 
 	public Customer findById(int id);
 
+	public Customer findByUserName(String userName);
+
+
 	public List<Customer> findCustomerList();
 
 

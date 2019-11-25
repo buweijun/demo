@@ -8,9 +8,13 @@
 	<script type="text/javascript">
 
 		function newCustomer(){
-			window.location.href='../customer/toNew';
+			window.location.href='../customer/toNew/';
 		}
 
+		function searchCustomer(){
+
+			window.location.href='../customer/searchCustomer/'+document.getElementById('userName').value;
+		}
 	</script>
 
   </head>
@@ -20,6 +24,14 @@
       <h1>customer List</h1>
 
 		<table>
+
+
+
+			<tr>
+		    	<td><input type="text" id="userName" name="userName" /></td>
+		    	<td><input type="button" value="search" onclick="searchCustomer()" /></td>
+		    </tr>
+
 		    <tr>
 		    	<td>count</td>
 		    	<td>ID</td>
@@ -45,10 +57,10 @@
 		</table>
 
 
-		<input type="button" value="new Customer" onclick="newCustomer()" />
+		<input type="button" value="new" onclick="newCustomer()" />
 
 
-		<a th:href="@{'/customer/toNew'}">toNew</a>
+		<a th:href="@{'/customer/toNew/'}">toNew</a>
 
 
     </div>
