@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.EmpMapper">
+
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.Emp">
+		<result column="EMPNO" jdbcType="INTEGER" property="empno" />
+		<result column="ENAME" jdbcType="VARCHAR" property="ename" />
+		<result column="JOB" jdbcType="VARCHAR" property="job" />
+		<result column="DEPTNO" jdbcType="INTEGER" property="deptno" />
+	</resultMap>
+
+	<select id="findByNo" resultType="com.example.demo.entity.Emp">
+		select EMPNO,ENAME,JOB,DEPTNO from EMP where EMPNO = #{empno}
+	</select>
+</mapper>
+
+
+
+

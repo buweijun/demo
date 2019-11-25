@@ -1,0 +1,56 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>customer List</title>
+
+	<script type="text/javascript">
+
+		function newCustomer(){
+			window.location.href='../customer/toNew';
+		}
+
+	</script>
+
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>hello world</h1>
+
+		<table>
+			<tr>customer</tr>
+		    <tr>
+		    	<td>count</td>
+		    	<td>ID</td>
+		        <td>userName</td>
+		        <td>passWord</td>
+				<td>job</td>
+				<td>opt</td>
+		    </tr>
+
+			<tr th:each="entries,stat:${customerList}" th:style="'background-color:'+@{${stat.odd}?'#F2F2F2'}">
+				<td th:text="${stat.count}"></td>
+				<td th:text="${entries['id']}"></td>
+		 		<td th:text="${entries['userName']}"></td>
+		 		<td th:text="${entries['passWord']}"></td>
+		 		<td th:text="${entries['job']}"></td>
+		 		<td>
+		 			<a th:href="@{'/customer/deleteCustomer/'+${entries['id']}}">delete</a>
+		 			<a th:href="@{'/customer/getCustomer/'+${entries['id']}}">view</a>
+		 		</td>
+		     </tr>
+		</table>
+
+
+		<input type="button" value="new Customer" onclick="newCustomer()" />
+
+
+		<a th:href="@{'/customer/toNew'}">toNew</a>
+
+
+    </div>
+
+  </body>
+</html>

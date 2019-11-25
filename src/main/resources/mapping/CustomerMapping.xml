@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CustomerMapper">
+
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.Customer">
+		<result column="ID" jdbcType="INTEGER" property="id" />
+		<result column="USERNAME" jdbcType="VARCHAR" property="userName" />
+		<result column="PASSWORD" jdbcType="INTEGER" property="passWord" />
+		<result column="JOB" jdbcType="VARCHAR" property="job" />
+	</resultMap>
+
+	<select id="findById" resultType="com.example.demo.entity.Customer">
+		select * from CUSTOMER where ID = #{id}
+	</select>
+
+	<select id="findCustomerList" resultType="com.example.demo.entity.Customer">
+		select * from CUSTOMER
+	</select>
+
+
+	<insert id="insert" parameterType="com.example.demo.entity.Customer">
+		<selectKey resultType="Integer" keyProperty="id" order="AFTER">
+        	select nvl(max(id),1) from customer
+    	</selectKey>
+       		insert into CUSTOMER(userName,passWord,job)VALUES (#{userName},#{passWord},#{job})
+   	</insert>
+
+
+
+	<delete id="delete" parameterType="java.lang.Integer">
+        delete from CUSTOMER where id = #{id}
+    </delete>
+
+
+
+</mapper>
+
+
+
+

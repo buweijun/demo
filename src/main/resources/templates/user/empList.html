@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show User</title>
+</head>
+<body>
+<table>
+
+	<tr>emp</tr>
+    <tr>
+    	<td>count</td>
+        <td>名前</td>
+        <td>empno</td>
+        <td>job</td>
+        <td>deptno</td>
+
+    </tr>
+
+<!--     <tr>
+        <td th:text="${emp.ename}"></td>
+        <td th:text="${emp.empno}"></td>
+        <td th:text="${emp.job}"></td>
+        <td th:text="${emp.deptno}"></td>
+    </tr>
+ -->
+
+
+
+	<tr th:each="entries,stat:${empList}" th:style="'background-color:'+@{${stat.odd}?'#F2F2F2'}">
+		<td th:text="${stat.count}"></td>
+		<td th:text="${entries['ename']}"></td>
+ 		<td th:text="${entries['empno']}"></td>
+ 		<td th:text="${entries['job']}"></td>
+ 		<td th:text="${entries['deptno']}"></td>
+     </tr>
+
+
+</table>
+</body>
+</html>

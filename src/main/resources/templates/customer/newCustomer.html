@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show User</title>
+</head>
+<body>
+
+
+
+
+
+<form action="../customer/newCustomer" method="post" οnsubmit="return beforeSubmit()">
+
+	userName:<input type="text"  id="userName"   name="userName"  value=""  />
+	passWord:<input type="text"  id="passWord"   name="passWord"  value=""  />
+	job:<input type="text"  id="job"   name="job"  value=""  />
+
+
+    <input type="submit" value="Submit" />
+</form>
+
+
+<script type="text/javascript">
+    function beforeSubmit() {
+        var userName = document.getElementById('userName').value;
+        var passWord = document.getElementById('passWord').value;
+        if (username.length < 2 || password.length < 4) {
+            alert('格式不正确！');
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	function getList(){
+
+		window.location.href='../findCustomerList';
+	}
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

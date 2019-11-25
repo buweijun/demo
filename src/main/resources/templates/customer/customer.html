@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show User</title>
+</head>
+<body>
+<table>
+
+	<tr>customer</tr>
+    <tr>
+    	<td>ID</td>
+        <td>userName</td>
+        <td>passWord</td>
+		<td>job</td>
+
+    </tr>
+    <tr>
+    	<td th:text="${customer.id}"></td>
+        <td th:text="${customer.userName}"></td>
+        <td th:text="${customer.passWord}"></td>
+        <td th:text="${customer.job}"></td>
+    </tr>
+
+
+
+
+</table>
+
+<input type="button" value="get List" onclick="getList()" />
+
+<script type="text/javascript">
+
+	function getList(){
+
+		window.location.href='../findCustomerList';
+	}
+
+</script>
+
+
+<input type="button" value="new Customer" onclick="newCustomer()" />
+
+<script type="text/javascript">
+
+	function newCustomer(){
+		window.location.href='../toNew';
+	}
+
+</script>
+
+
+
+
+</body>
+</html>
