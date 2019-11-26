@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,8 +34,8 @@ public class CustomerController {
 	 }
 
 
-
-	@RequestMapping("deleteCustomer/{id}")
+	@ApiOperation(value = "delete info", notes = "delete info")
+	@GetMapping("deleteCustomer/{id}")
 	public ModelAndView deleteCustomer(@PathVariable int id) {
 		ModelAndView mv = new ModelAndView();
 		customerService.delete(id);
