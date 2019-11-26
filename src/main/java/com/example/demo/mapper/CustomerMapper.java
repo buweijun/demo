@@ -14,6 +14,7 @@ public interface CustomerMapper {
 
 	Customer findByUserName(String userName);
 
+	List<Customer> search(Customer customer);
 
 	List<Customer> findCustomerList();
 

@@ -11,13 +11,18 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.entity.Customer;
 import com.example.demo.service.CustomerService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/customer")
+@Api(description = "Customer管理")
 public class CustomerController {
 
 	@Resource
 	private CustomerService customerService;
 
+	@ApiOperation(value = "获取info", notes = "获取info")
 	@RequestMapping("getCustomer/{id}")
 	public ModelAndView getCustomer(@PathVariable int id){
 		ModelAndView mv = new ModelAndView();
@@ -49,10 +54,13 @@ public class CustomerController {
 
 
 
-	@RequestMapping("searchCustomer/{userName}")
-	public ModelAndView searchCustomer(@PathVariable String userName) {
+	@RequestMapping("searchCustomer")
+	public ModelAndView searchCustomer(String userName,String job) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("customerList", customerService.findByUserName(userName));
+		Customer customer = new Customer();
+		customer.setUserName(userName);
+		customer.setJob(job);
+		mv.addObject("customerList", customerService.search(customer));
 		mv.setViewName("/customer/customerList.html");
 		return mv;
 	}

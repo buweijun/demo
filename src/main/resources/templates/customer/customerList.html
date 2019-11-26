@@ -8,12 +8,26 @@
 	<script type="text/javascript">
 
 		function newCustomer(){
-			window.location.href='../customer/toNew/';
+			window.location.href='../customer/toNew';
 		}
+
+		function getList(){
+			window.location.href='../customer/findCustomerList';
+		}
+
 
 		function searchCustomer(){
 
-			window.location.href='../customer/searchCustomer/'+document.getElementById('userName').value;
+	        var userName = document.getElementById('userName').value;
+	        var job = document.getElementById('job').value;
+	        if (username.length >50 || job.length > 50) {
+	            alert('too loog！');
+	            return false;
+	        } else {
+	            return true;
+	        }
+
+			//window.location.href='../customer/searchCustomer/'+document.getElementById('userName').value +'/'+document.getElementById('job').value;
 		}
 	</script>
 
@@ -23,44 +37,56 @@
     <div class="container">
       <h1>customer List</h1>
 
-		<table>
+
+		<form action="searchCustomer" method="post"  onsubmit="return searchCustomer()">
+
+			<table>
+				<tr>
+			    	<td>userName:<input type="text" id="userName" name="userName" /></td>
+			    	<td>job:<input type="text" id="job" name="job" /></td>
+			    	<td>
+			    		<input type="submit" value="Search" />
+
+			    		<input type="button" value="ListAll" onclick="getList()" />
+
+			    		<input type="button" value="new" onclick="newCustomer()" />
+
+			    	</td>
+			    </tr>
+			    <tr>
+			    	<td>count</td>
+			    	<td>ID</td>
+			        <td>userName</td>
+			        <td>passWord</td>
+					<td>job</td>
+					<td>opt</td>
+			    </tr>
+
+				<tr th:each="entries,stat:${customerList}" th:style="'background-color:'+@{${stat.odd}?'#F2F2F2'}">
+					<td width="15%" th:text="${stat.count}"></td>
+					<td width="15%" th:text="${entries['id']}"></td>
+			 		<td width="15%" th:text="${entries['userName']}"></td>
+			 		<td width="15%" th:text="${entries['passWord']}"></td>
+			 		<td width="15%" th:text="${entries['job']}"></td>
+			 		<td>
+			 			&nbsp;&nbsp;&nbsp;&nbsp;
+			 			<a th:href="@{'/customer/deleteCustomer/'+${entries['id']}}">delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			 			<a th:href="@{'/customer/toUpdate/'+${entries['id']}}">update</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			 			<a th:href="@{'/customer/getCustomer/'+${entries['id']}}">view</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			 		</td>
+			     </tr>
+			</table>
+
+
+		</form>
 
 
 
-			<tr>
-		    	<td><input type="text" id="userName" name="userName" /></td>
-		    	<td><input type="button" value="search" onclick="searchCustomer()" /></td>
-		    </tr>
-
-		    <tr>
-		    	<td>count</td>
-		    	<td>ID</td>
-		        <td>userName</td>
-		        <td>passWord</td>
-				<td>job</td>
-				<td>opt</td>
-		    </tr>
-
-			<tr th:each="entries,stat:${customerList}" th:style="'background-color:'+@{${stat.odd}?'#F2F2F2'}">
-				<td th:text="${stat.count}"></td>
-				<td th:text="${entries['id']}"></td>
-		 		<td th:text="${entries['userName']}"></td>
-		 		<td th:text="${entries['passWord']}"></td>
-		 		<td th:text="${entries['job']}"></td>
-		 		<td>
-		 			<a th:href="@{'/customer/deleteCustomer/'+${entries['id']}}">delete</a>
-		 			<a th:href="@{'/customer/toUpdate/'+${entries['id']}}">update</a>
-		 			<a th:href="@{'/customer/getCustomer/'+${entries['id']}}">view</a>
-
-		 		</td>
-		     </tr>
-		</table>
 
 
-		<input type="button" value="new" onclick="newCustomer()" />
 
 
-		<a th:href="@{'/customer/toNew/'}">toNew</a>
+		<a th:href="@{'/customer/toNew'}">toNew</a>
 
 
     </div>

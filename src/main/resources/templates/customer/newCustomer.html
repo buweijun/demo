@@ -4,15 +4,38 @@
     <meta charset="UTF-8">
     <title>Show Info</title>
 </head>
+
+<script type="text/javascript">
+    function beforeSubmit() {
+        var userName = document.getElementById('userName').value;
+        var passWord = document.getElementById('passWord').value;
+        if (username.length < 2 || password.length < 4) {
+            alert('格式不正确！');
+            return false;
+        } else {
+
+
+            return true;
+        }
+    }
+
+	function getList(){
+		window.location.href='/customer/findCustomerList';
+	}
+
+
+</script>
+
+
 <body>
 
 
 
-<form action="../newCustomer" method="post"  onsubmit="return beforeSubmit()">
+<form th:action="@{'/customer/newCustomer'}" method="post"  onsubmit="return beforeSubmit()">
 
 
 	<table>
-		<tr>customer</tr>
+		<tr>new customer</tr>
 	    <tr>
 	    	<td>ID</td>
 	        <td>userName</td>
@@ -28,43 +51,10 @@
 	</table>
 
     <input type="submit" value="Submit" />
+
+    <input type="button" value="ListAll" onclick="getList()" />
+
 </form>
-
-
-<script type="text/javascript">
-    function beforeSubmit() {
-        var userName = document.getElementById('userName').value;
-        var passWord = document.getElementById('passWord').value;
-        if (username.length < 2 || password.length < 4) {
-            alert('格式不正确！');
-            return false;
-        } else {
-        	
-        	
-            return true;
-        }
-    }
-</script>
-
-
-
-
-
-
-
-<script type="text/javascript">
-
-	function getList(){
-
-		window.location.href='../findCustomerList';
-	}
-
-</script>
-
-
-
-
-
 
 </body>
 </html>

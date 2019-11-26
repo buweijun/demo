@@ -14,13 +14,23 @@
 	</select>
 
 
-	<select id="findByUserName" resultType="com.example.demo.entity.Customer">
-		select * from CUSTOMER where userName like '%#{userName}%'
+	<select id="search" parameterType="com.example.demo.entity.Customer" resultType="com.example.demo.entity.Customer">
+		select * from CUSTOMER where 1=1
+
+		<if test="userName!=null and userName!=''">
+			and userName like '%${userName}%'
+		</if>
+
+		<if test="job!=null and job!=''">
+			and job like '%${job}%'
+		</if>
+
+		order by id
 	</select>
 
 
 	<select id="findCustomerList" resultType="com.example.demo.entity.Customer">
-		select * from CUSTOMER
+		select * from CUSTOMER order by id
 	</select>
 
 
@@ -28,7 +38,7 @@
 		<selectKey resultType="Integer" keyProperty="id" order="AFTER">
         	select nvl(max(id),1) from customer
     	</selectKey>
-       		insert into CUSTOMER(userName,passWord,job)VALUES (#{userName},#{passWord},#{job})
+       		insert into CUSTOMER (userName,passWord,job) values (#{userName},#{passWord},#{job})
    	</insert>
 
 
