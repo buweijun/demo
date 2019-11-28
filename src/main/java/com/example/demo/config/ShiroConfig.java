@@ -51,8 +51,6 @@ public class ShiroConfig {
         //对所有用户认证
         map.put("/**", "authc");
 
-        map.put("/emp", "emp");
-        map.put("/vue", "vue");
 
         //登录
         shiroFilterFactoryBean.setLoginUrl("/login");
