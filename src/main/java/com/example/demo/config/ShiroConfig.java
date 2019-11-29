@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.shiro.mgt.SecurityManager;
@@ -45,9 +45,16 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new LinkedHashMap<>();
         //登出
         map.put("/logout", "logout");
+
+
+        //不拦截
+        map.put("/emp/findemp","anon");
+        map.put("/vue/vueStart","anon");
+        map.put("/customer/findCustomerList","anon");
+
         //对所有用户认证
         map.put("/**", "authc");
 

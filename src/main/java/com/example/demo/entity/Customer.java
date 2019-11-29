@@ -15,7 +15,7 @@ public class Customer {
 
 	private String userName;
 
-	private Integer passWord;
+	private String passWord;
 
 	private String job;
 
@@ -28,7 +28,7 @@ public class Customer {
 	private Set<Role> roles;
 
 
-	public Customer(Integer id, String userName, Integer passWord, Set<Role> roleSet) {
+	public Customer(Integer id, String userName, String passWord, Set<Role> roleSet) {
 		this.id = id;
 		this.userName=userName;
 		this.passWord=passWord;

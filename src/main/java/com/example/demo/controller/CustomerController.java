@@ -94,7 +94,7 @@ public class CustomerController {
 
 	//new or update
 	@RequestMapping("/newCustomer")
-	public ModelAndView newCustomer(Integer id,String userName,Integer passWord,String job) {
+	public ModelAndView newCustomer(Integer id,String userName,String passWord,String job) {
 		ModelAndView mv = new ModelAndView();
 		Customer customer = new Customer();
 		customer.setJob(job);
