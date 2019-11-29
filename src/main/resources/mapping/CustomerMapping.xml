@@ -5,12 +5,16 @@
 	<resultMap id="BaseResultMap" type="com.example.demo.entity.Customer">
 		<result column="ID" jdbcType="INTEGER" property="id" />
 		<result column="USERNAME" jdbcType="VARCHAR" property="userName" />
-		<result column="PASSWORD" jdbcType="INTEGER" property="passWord" />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="passWord" />
 		<result column="JOB" jdbcType="VARCHAR" property="job" />
 	</resultMap>
 
 	<select id="findById" resultType="com.example.demo.entity.Customer">
 		select * from CUSTOMER where ID = #{id}
+	</select>
+
+	<select id="findByUserName" resultType="com.example.demo.entity.Customer">
+		select * from CUSTOMER where USERNAME = #{userName}
 	</select>
 
 

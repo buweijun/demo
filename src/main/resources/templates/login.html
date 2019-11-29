@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Info</title>
+</head>
+
+<script type="text/javascript">
+    function beforeSubmit() {
+        var userName = document.getElementById('userName').value;
+        var passWord = document.getElementById('passWord').value;
+        if (username.length < 2 || password.length < 4) {
+            alert('格式不正确！');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+</script>
+
+
+<body>
+
+
+
+<form th:action="@{'/login'}" method="post"  onsubmit="return beforeSubmit()">
+
+
+	<table>
+		<tr>login</tr>
+	    <tr>
+	        <td>userName</td>
+	        <td>passWord</td>
+	    </tr>
+	    <tr>
+	        <td><input type="text"  id="userName"   name="userName"  /></td>
+	        <td><input type="text"  id="passWord"   name="passWord"  /></td>
+
+	        <td th:text="${message}"></td>
+	    </tr>
+	</table>
+
+    <input type="submit" value="Login" />
+
+
+</form>
+
+</body>
+</html>

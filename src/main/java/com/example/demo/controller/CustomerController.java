@@ -46,7 +46,7 @@ public class CustomerController {
 
 
 	@RequestMapping("/findCustomerList")
-	public ModelAndView findEmpList(HttpServletRequest req) {
+	public ModelAndView findCustomerList(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("customerList", customerService.findCustomerList());
 		mv.setViewName("/customer/customerList.html");

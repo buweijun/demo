@@ -53,7 +53,9 @@ public class ShiroConfig {
         //不拦截
         map.put("/emp/findemp","anon");
         map.put("/vue/vueStart","anon");
-        map.put("/customer/findCustomerList","anon");
+        map.put("/customer/**","anon");
+        map.put("/toLogin", "anon");
+
 
         //对所有用户认证
         map.put("/**", "authc");
